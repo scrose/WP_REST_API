@@ -1,0 +1,13 @@
+name: CS-CAN/INFO-CAN
+type: theme
+description: 'Custom theme for the CS-CAN/INFO-CAN website.'
+core: 8.x
+libraries:
+  - cscan/global-styling
+base theme: stable
+screenshot: cscan.png
+regions:
+  header: Header
+  content: Content
+  sidebar_first: 'Sidebar first'
+  footer: Footer
