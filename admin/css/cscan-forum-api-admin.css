@@ -1,0 +1,70 @@
+/**
+ * All of the CSS for your admin-specific functionality should be
+ * included in this file.
+ */
+
+ .forum_api_field_options {
+   width: 100%;
+ }
+
+ .forum_api_field_options label {
+   display: inline-block;
+   width: 150px;
+ }
+
+ .forum_api_field_options input {
+   margin-left:5px;
+   padding:3px;
+ }
+
+ .accordion {
+   padding:3px;
+   background-color: #DDD;
+ }
+
+ .accordion .panel {
+   padding:4px;
+   background-color: inherit;
+ }
+
+ .accordion > li {
+   width: 100%;
+ }
+
+ .accordion .toggle {
+   height:30px;
+   width: 30px;
+   border: 1px solid #444;
+   background-color: #444;
+   font-weight: 400;
+   color: #FFF;
+   margin:3px;
+ }
+
+.forum_api_field_options_active {
+  width: 100%;
+  background-color: #DDD;
+}
+
+.accordion button:before {
+   cursor: pointer;
+   content: "\2303";
+   float: right;
+   transition: all 0.1s;
+   -webkit-transform: rotate(180deg);
+   -moz-transform: rotate(180deg);
+   transform: rotate(180deg);
+}
+.accordion button.toggle.show:before {
+  cursor: pointer;
+	-webkit-transform: rotate(0deg);
+	-moz-transform: rotate(0deg);
+	transform: rotate(0deg);
+}
+
+/* Notifications */
+.forum_notifications {
+  font-family: monospace;
+  background-color: #DDD;
+  width: 80%;
+}

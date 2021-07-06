@@ -1,0 +1,711 @@
+{
+  "menu_page": {
+    "page_title": "Forum API: Settings",
+    "menu_title": "Forum API",
+    "capability": "manage_options",
+    "menu_slug": "wp_forum_api_settings",
+    "callback": "plugin_main_page_content",
+    "icon": "dashicons-rest-api",
+    "position": "1"
+  },
+  "submenu_pages": {
+
+    "main": {
+      "page_title": "Forum API Settings",
+      "menu_title": "Settings",
+      "capability": "manage_options",
+      "menu_slug": "wp_forum_api_settings",
+      "callback": "plugin_main_page_content",
+      "sections":
+      {
+        "base":
+        {
+          "id": "wp_forum_api_base_settings",
+          "title": "API Settings",
+          "callback": "section_callback",
+          "description": "Basic settings for establishing REST API connection with the Forum.",
+          "settings": {
+            "url":
+            {
+              "id": "wp_forum_api_url",
+              "title": "Base URL",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_url"
+              }
+            },
+            "key":
+            {
+              "id": "wp_forum_api_key",
+              "title": "Security Key",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_key"
+              }
+            },
+            "token":
+            {
+              "id": "wp_forum_api_token",
+              "title": "Security Token",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_token"
+              }
+            },
+            "logs":
+            {
+              "id": "wp_forum_api_logs",
+              "title": "Notification Logs",
+              "callback": "wp_forum_api_logs_render",
+              "args":
+              {
+                "id": "wp_forum_api_logs",
+                "logdir": "forum_logs"
+              }
+            }
+          }
+        }
+      }
+    },
+
+    "news": {
+      "page_title": "Forum API: News Items",
+      "menu_title": "News",
+      "capability": "manage_options",
+      "menu_slug": "wp_forum_api_news",
+      "callback": "plugin_section_page_content",
+      "sections": {
+        "base": {
+          "id": "wp_forum_api_news_settings",
+          "title": "API Settings",
+          "callback": "section_callback",
+          "description": "General settings for Forum API: News Items.",
+          "settings": {
+            "action": {
+              "id": "wp_forum_api_news_action",
+              "title": "Action",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_news_action"
+              }
+            },
+            "forum_id": {
+              "id": "wp_forum_api_news_id",
+              "title": "Forum ID Key",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_news_id"
+              }
+            },
+            "edit": {
+              "id": "wp_forum_api_news_edit",
+              "title": "Base URI",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_news_edit"
+              }
+            },
+            "language": {
+              "id": "wp_forum_api_news_language",
+              "title": "Language Field",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_news_language"
+              }
+            }
+          }
+        },
+        "fields": {
+          "id": "wp_forum_api_news_fields",
+          "title": "Forum Fields",
+          "callback": "section_callback",
+          "description": "Select active fields for Forum API: News Items.",
+          "settings": {
+            "post_title":
+            {
+              "id": "wp_forum_api_news_map_post_title",
+              "title": "Post Title Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_news_map_post_title"
+              }
+            },
+            "post_content":
+            {
+              "id": "wp_forum_api_news_map_post_content",
+              "title": "Post Content Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_news_map_post_content"
+              }
+            },
+            "post_title_fr":
+            {
+              "id": "wp_forum_api_news_map_post_title_fr",
+              "title": "Post Title Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_news_map_post_title_fr"
+              }
+            },
+            "post_content_fr":
+            {
+              "id": "wp_forum_api_news_map_post_content_fr",
+              "title": "Post Content Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_news_map_post_content_fr"
+              }
+            },
+            "post_image":
+            {
+              "id": "wp_forum_api_news_map_post_image",
+              "title": "Post Image",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_news_map_post_image"
+              }
+            },
+            "expiration_date":
+            {
+              "id": "wp_forum_api_news_map_expiration_date",
+              "title": "Expiration Date",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_news_map_expiration_date"
+              }
+            },
+            "fields":
+            {
+              "id": "wp_forum_api_news_fields",
+              "title": "Data Fields",
+              "callback": "wp_forum_api_fields_render",
+              "args":
+              {
+                "id": "wp_forum_api_news_fields",
+                "section": "news",
+                "post_content": "wp_forum_api_news_map_post_content",
+                "post_title": "wp_forum_api_news_map_post_title",
+                "post_content_fr": "wp_forum_api_news_map_post_content_fr",
+                "post_title_fr": "wp_forum_api_news_map_post_title_fr",
+                "post_image": "wp_forum_api_news_map_post_image",
+                "expiration_date": "wp_forum_api_news_map_news_date"
+              }
+            }
+          }
+        }
+      }
+    },
+
+
+
+    "events": {
+      "page_title": "Forum API: Events",
+      "menu_title": "Events",
+      "capability": "manage_options",
+      "menu_slug": "wp_forum_api_events",
+      "callback": "plugin_section_page_content",
+      "sections": {
+        "base": {
+          "id": "wp_forum_api_events_settings",
+          "title": "API Settings",
+          "callback": "section_callback",
+          "description": "Settings for Forum API: Event Announcements.",
+          "settings": {
+            "action": {
+              "id": "wp_forum_api_events_action",
+              "title": "Action",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_events_action"
+              }
+            },
+            "forum_id": {
+              "id": "wp_forum_api_events_id",
+              "title": "Forum ID Key",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_events_id"
+              }
+            },
+            "edit": {
+              "id": "wp_forum_api_events_edit",
+              "title": "Base URI",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_events_edit"
+              }
+            },
+            "language": {
+              "id": "wp_forum_api_events_language",
+              "title": "Language Field",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_events_language"
+              }
+            }
+          }
+        },
+        "fields": {
+          "id": "wp_forum_api_events_fields",
+          "title": "Forum Fields",
+          "callback": "section_callback",
+          "description": "Select active fields for Forum API: Event Announcements.",
+          "settings": {
+            "post_title":
+            {
+              "id": "wp_forum_api_events_map_post_title",
+              "title": "Post Title Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_events_map_post_title"
+              }
+            },
+            "post_content":
+            {
+              "id": "wp_forum_api_events_map_post_content",
+              "title": "Post Content Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_events_map_post_content"
+              }
+            },
+            "post_title_fr":
+            {
+              "id": "wp_forum_api_events_map_post_title_fr",
+              "title": "Post Title Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_events_map_post_title_fr"
+              }
+            },
+            "post_content_fr":
+            {
+              "id": "wp_forum_api_events_map_post_content_fr",
+              "title": "Post Content Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_events_map_post_content_fr"
+              }
+            },
+            "post_image":
+            {
+              "id": "wp_forum_api_events_map_post_image",
+              "title": "Post Image",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_events_map_post_image"
+              }
+            },
+            "expiration_date":
+            {
+              "id": "wp_forum_api_events_map_expiration_date",
+              "title": "Expiration Date",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_events_map_expiration_date"
+              }
+            },
+            "fields":
+            {
+              "id": "wp_forum_api_events_fields",
+              "title": "Data Fields",
+              "callback": "wp_forum_api_fields_render",
+              "args":
+              {
+                "id": "wp_forum_api_events_fields",
+                "section": "events",
+                "post_content": "wp_forum_api_events_map_post_content",
+                "post_title": "wp_forum_api_events_map_post_title",
+                "post_content_fr": "wp_forum_api_events_map_post_content_fr",
+                "post_title_fr": "wp_forum_api_events_map_post_title_fr",
+                "post_image": "wp_forum_api_events_map_post_image",
+                "expiration_date": "wp_forum_api_events_map_expiration_date"
+              }
+            }
+          }
+        }
+      }
+    },
+
+
+
+    "opportunities": {
+      "page_title": "Forum API: Job Ads",
+      "menu_title": "Jobs",
+      "capability": "manage_options",
+      "menu_slug": "wp_forum_api_oppportunities",
+      "callback": "plugin_section_page_content",
+      "sections": {
+        "base": {
+          "id": "wp_forum_api_opportunities_settings",
+          "title": "API Settings",
+          "callback": "section_callback",
+          "description": "Settings for Forum API: Job Ads.",
+          "settings": {
+            "action": {
+              "id": "wp_forum_api_opportunities_action",
+              "title": "Action",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_opportunities_action"
+              }
+            },
+            "forum_id": {
+              "id": "wp_forum_api_opportunities_id",
+              "title": "Forum ID Key",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_opportunities_id"
+              }
+            },
+            "edit": {
+              "id": "wp_forum_api_opportunities_edit",
+              "title": "Base URI",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_opportunities_edit"
+              }
+            },
+            "language": {
+              "id": "wp_forum_api_opportunities_language",
+              "title": "Language Field",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_opportunities_language"
+              }
+            }
+          }
+        },
+        "fields": {
+          "id": "wp_forum_api_opportunities_fields",
+          "title": "Forum Fields",
+          "callback": "section_callback",
+          "description": "Select active fields for Forum API: Job Ads.",
+          "settings": {
+            "post_title":
+            {
+              "id": "wp_forum_api_opportunities_map_post_title",
+              "title": "Post Title Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_opportunities_map_post_title"
+              }
+            },
+            "post_content":
+            {
+              "id": "wp_forum_api_opportunities_map_post_content",
+              "title": "Post Content Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_opportunities_map_post_content"
+              }
+            },
+            "post_title_fr":
+            {
+              "id": "wp_forum_api_opportunities_map_post_title_fr",
+              "title": "Post Title Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_opportunities_map_post_title_fr"
+              }
+            },
+            "post_content_fr":
+            {
+              "id": "wp_forum_api_opportunities_map_post_content_fr",
+              "title": "Post Content Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_opportunities_map_post_content_fr"
+              }
+            },
+            "post_image":
+            {
+              "id": "wp_forum_api_opportunities_map_post_image",
+              "title": "Post Image",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_opportunities_map_post_image"
+              }
+            },
+            "expiration_date":
+            {
+              "id": "wp_forum_api_opportunities_map_expiration_date",
+              "title": "Expiration Date",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_opportunities_map_expiration_date"
+              }
+            },
+            "fields":
+            {
+              "id": "wp_forum_api_opportunities_fields",
+              "title": "Data Fields",
+              "callback": "wp_forum_api_fields_render",
+              "args":
+              {
+                "id": "wp_forum_api_opportunities_fields",
+                "section": "opportunities",
+                "post_content": "wp_forum_api_opportunities_map_post_content",
+                "post_title": "wp_forum_api_opportunities_map_post_title",
+                "post_content_fr": "wp_forum_api_opportunities_map_post_content_fr",
+                "post_title_fr": "wp_forum_api_opportunities_map_post_title_fr",
+                "post_image": "wp_forum_api_opportunities_map_post_image",
+                "expiration_date": "wp_forum_api_opportunities_map_expiration_date"
+              }
+            }
+          }
+        }
+      }
+    },
+
+
+
+
+    "departments": {
+      "page_title": "Forum API: Member Departments",
+      "menu_title": "Departments",
+      "capability": "manage_options",
+      "menu_slug": "wp_forum_api_departments",
+      "callback": "plugin_section_page_content",
+      "sections": {
+        "base": {
+          "id": "wp_forum_api_departments_settings",
+          "title": "API Settings",
+          "callback": "section_callback",
+          "description": "Settings for Forum API: Member Departments.",
+          "settings": {
+            "action": {
+              "id": "wp_forum_api_departments_action",
+              "title": "Action",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_departments_action"
+              }
+            },
+            "forum_id": {
+              "id": "wp_forum_api_departments_id",
+              "title": "Forum ID Key",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_departments_id"
+              }
+            },
+            "language": {
+              "id": "wp_forum_api_departments_language",
+              "title": "Language Field",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_departments_language"
+              }
+            }
+          }
+        },
+        "fields": {
+          "id": "wp_forum_api_departments_fields",
+          "title": "Forum Fields",
+          "callback": "section_callback",
+          "description": "Select active fields for Forum API: Member Departments.",
+          "settings": {
+            "post_title":
+            {
+              "id": "wp_forum_api_departments_map_post_title",
+              "title": "Post Title Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_departments_map_post_title"
+              }
+            },
+            "post_content":
+            {
+              "id": "wp_forum_api_departments_map_post_content",
+              "title": "Post Content Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_departments_map_post_content"
+              }
+            },
+            "post_title_fr":
+            {
+              "id": "wp_forum_api_departments_map_post_title_fr",
+              "title": "Post Title Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_departments_map_post_title_fr"
+              }
+            },
+            "post_content_fr":
+            {
+              "id": "wp_forum_api_departments_map_post_content_fr",
+              "title": "Post Content Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_departments_map_post_content_fr"
+              }
+            },
+            "post_image":
+            {
+              "id": "wp_forum_api_departments_map_post_image",
+              "title": "Post Image",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_departments_map_post_image"
+              }
+            },
+            "fields":
+            {
+              "id": "wp_forum_api_departments_fields",
+              "title": "Data Fields",
+              "callback": "wp_forum_api_fields_render",
+              "args":
+              {
+                "id": "wp_forum_api_departments_fields",
+                "section": "departments",
+                "post_content": "wp_forum_api_departments_map_post_content",
+                "post_title": "wp_forum_api_departments_map_post_title",
+                "post_content_fr": "wp_forum_api_departments_map_post_content_fr",
+                "post_title_fr": "wp_forum_api_departments_map_post_title_fr",
+                "post_image": "wp_forum_api_departments_map_post_image"
+              }
+            }
+          }
+        }
+      }
+    },
+
+
+
+
+    "individuals": {
+      "page_title": "Forum API: Individuals",
+      "menu_title": "Individuals",
+      "capability": "manage_options",
+      "menu_slug": "wp_forum_api_individuals",
+      "callback": "plugin_section_page_content",
+      "sections": {
+        "base": {
+          "id": "wp_forum_api_individuals_settings",
+          "title": "API Settings",
+          "callback": "section_callback",
+          "description": "Settings for Forum API: Member Individuals.",
+          "settings": {
+            "action": {
+              "id": "wp_forum_api_individuals_action",
+              "title": "Action",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_individuals_action"
+              }
+            },
+            "forum_id": {
+              "id": "wp_forum_api_individuals_id",
+              "title": "Forum ID Key",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_individuals_id"
+              }
+            },
+            "language": {
+              "id": "wp_forum_api_individuals_language",
+              "title": "Language Field",
+              "callback": "wp_forum_api_textfield_render",
+              "args":
+              {
+                "id": "wp_forum_api_individuals_language"
+              }
+            }
+          }
+        },
+        "fields": {
+          "id": "wp_forum_api_individuals_fields",
+          "title": "API Settings",
+          "callback": "section_callback",
+          "description": "Select active fields for Forum API: Member Individuals.",
+          "settings": {
+            "post_title":
+            {
+              "id": "wp_forum_api_individuals_map_post_title",
+              "title": "Post Title Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_individuals_map_post_title"
+              }
+            },
+            "post_content":
+            {
+              "id": "wp_forum_api_individuals_map_post_content",
+              "title": "Post Content Field (EN)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_individuals_map_post_content"
+              }
+            },
+            "post_title_fr":
+            {
+              "id": "wp_forum_api_individuals_map_post_title_fr",
+              "title": "Post Title Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_individuals_map_post_title_fr"
+              }
+            },
+            "post_content_fr":
+            {
+              "id": "wp_forum_api_individuals_map_post_content_fr",
+              "title": "Post Content Field (FR)",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_individuals_map_post_content_fr"
+              }
+            },
+            "post_image":
+            {
+              "id": "wp_forum_api_individuals_map_post_image",
+              "title": "Post Image",
+              "callback": "wp_forum_api_mappings_render",
+              "args":{
+                "id": "wp_forum_api_individuals_map_post_image"
+              }
+            },
+            "fields":
+            {
+              "id": "wp_forum_api_individuals_fields",
+              "title": "Data Fields",
+              "callback": "wp_forum_api_fields_render",
+              "args":
+              {
+                "id": "wp_forum_api_individuals_fields",
+                "section": "individuals",
+                "post_content": "wp_forum_api_individuals_map_post_content",
+                "post_title": "wp_forum_api_individuals_map_post_title",
+                "post_content_fr": "wp_forum_api_individuals_map_post_content_fr",
+                "post_title_fr": "wp_forum_api_individuals_map_post_title_fr",
+                "post_image": "wp_forum_api_individuals_map_post_image"
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
