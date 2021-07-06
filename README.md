@@ -4,7 +4,7 @@
 
 WPSync is a WordPress plugin designed to synchronize WP content using the [MediaWiki](https://www.mediawiki.org/wiki/MediaWiki) Action API web service.
 This service allows access to some wiki-features like authentication, page operations, and search. For documentation on available
-endpoints at [MediaWiki:API](https://www.mediawiki.org/wiki/API:Main_page).
+endpoints, visit [MediaWiki:API](https://www.mediawiki.org/wiki/API:Main_page).
 
 ## Installation
 
